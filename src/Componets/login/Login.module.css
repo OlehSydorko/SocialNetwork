@@ -1,0 +1,22 @@
+.email {
+    padding: 10px;
+}
+.login {
+    padding: 10px;
+}
+.button {
+    padding: 10px;
+}
+.hide_button {
+    background: #00000000;
+    cursor: pointer;
+    height: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+.checkbox {
+    padding: 10px;
+}
+.errMessages {
+    color: red;
+}
