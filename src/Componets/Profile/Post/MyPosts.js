@@ -16,7 +16,7 @@ const MyPosts = ({ addPost, updateNewPostText, posts, newPostText }) => {
     <div className={classes.myPosts}>
       <h3>My posts</h3>
       <div>
-        <textarea onChange={onPostChange} value={newPostText} />
+        <textarea placeholder='Enter your post' onChange={onPostChange} value={newPostText} />
       </div>
       <div>
         <button onClick={onAddPost}>Create post</button>

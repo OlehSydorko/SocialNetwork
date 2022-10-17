@@ -24,7 +24,7 @@ const Dialogs = ({ messages, sendMessage, updateNewMessage, isAuth, newMessageTe
       <div className={classes.messages}>
         <div>{messageElements}</div>
         <div className={classes.myMessages}>
-          <textarea onChange={onNewMessageChange} value={newMessageBody} />
+          <textarea placeholder='Enter your message' onChange={onNewMessageChange} value={newMessageBody} />
         </div>
         <div className={classes.Button}>
           <button onClick={addMessage}>Create message</button>
