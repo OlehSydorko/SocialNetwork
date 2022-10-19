@@ -1,15 +1,25 @@
+import { FC } from 'react'
 import styles from './Users.module.css'
 import avatar from '../../axios/Images/avatar.png'
 import { getFollow } from '../../Redux/Users_reducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Pagination from './Pagination/Pagination'
+import { UserType } from '../../types'
 
-const Users = ({ isLoading, onPageChanged, setCurrentPage }) => {
+export type PropsType = {
+  onPageChanged: (pageNumber: number) => void
+  setCurrentPage: (pageNumber: number) => void
+}
+
+const Users: FC<PropsType> = ({ onPageChanged, setCurrentPage }) => {
+  console.log(onPageChanged)
   const dispatch = useDispatch()
+  //@ts-ignore TODO
   const { users, isFetching } = useSelector(state => state.usersPage)
+  const _users: UserType[] = users
 
-  const toggleFollow = (u, isFollowed) => {
+  const toggleFollow = (u: UserType, isFollowed: boolean) => {
     dispatch(getFollow(u, isFollowed))
   }
 
@@ -17,7 +27,7 @@ const Users = ({ isLoading, onPageChanged, setCurrentPage }) => {
     <div>
       <Pagination onPageChanged={onPageChanged} setCurrentPage={setCurrentPage} />
       <div className={styles.usersContainer}>
-        {users?.map(u => (
+        {_users?.map(u => (
           <div key={u.id}>
             <span>
               <div>
@@ -25,7 +35,7 @@ const Users = ({ isLoading, onPageChanged, setCurrentPage }) => {
                   <img src={u.photos.small != null ? u.photos.small : avatar} className={styles.userPhoto} alt={''} />
                 </NavLink>
               </div>
-              <button disabled={isFetching || isLoading} onClick={() => toggleFollow(u, u.followed)}>
+              <button disabled={isFetching} onClick={() => toggleFollow(u, u.followed)}>
                 {u.followed ? 'unFollow' : 'follow'}
               </button>
             </span>

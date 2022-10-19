@@ -8,7 +8,9 @@ import MyPostsAPI from './Post/MyPostsAPI'
 
 const Profile = () => {
   const dispatch = useDispatch()
+  //@ts-ignore TODO
   const profilePage = useSelector(state => state.profilePage)
+  //@ts-ignore TODO
   const auth = useSelector(state => state.auth)
   const { userId } = useParams()
   const isAuth = auth.isAuth

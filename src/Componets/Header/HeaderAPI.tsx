@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import * as React from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Header from './Header'
 import { setUserDataAC } from '../../Redux/auth.reducer'
@@ -6,6 +7,7 @@ import { loginAPI } from '../../API/API'
 
 const HeaderAPI = () => {
   const dispatch = useDispatch()
+  //@ts-ignore TODO
   const { isAuth, login } = useSelector(state => state.auth)
 
   useEffect(() => {
